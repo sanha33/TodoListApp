@@ -14,4 +14,7 @@ public class Menu {
         System.out.println("8. exit (Or press escape key to exit)");
         System.out.println("Enter your choice >");
     }
+    public static void prompt() {
+    	System.out.print("Command >>");
+    }
 }
