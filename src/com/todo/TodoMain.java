@@ -58,6 +58,10 @@ public class TodoMain {
 				isList = true;
 				break;
 			
+			case "find":
+				TodoUtil.findItem(l);
+				break;
+				
 			case "help":
 				Menu.displaymenu();
 				break;
