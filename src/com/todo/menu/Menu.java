@@ -18,7 +18,8 @@ public class Menu {
         System.out.println("12. sort the list by date ( ls_date )");
         System.out.println("13. Find an items ( find )");
         System.out.println("14. Find an category ( find_cate )");
-        System.out.println("15. exit (Or press escape key to exit)");
+        System.out.println("15. Change category ( find_cate )");
+        System.out.println("16. exit (Or press escape key to exit)");
         //System.out.println("Enter your choice >");
     }
     public static void prompt() {
