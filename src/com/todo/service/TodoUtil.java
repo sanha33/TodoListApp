@@ -35,13 +35,13 @@ public static void createItem(TodoList list) {
 		
 		System.out.printf("카테고리 >");
 		category = sc.next();
-		sc.nextLine();
+		
 		System.out.printf("내용 >");
-		desc = sc.nextLine().trim();
+		desc = sc.next();
 		System.out.printf("마감일자(yy/mm/dd) >");
-		due_date = sc.nextLine().trim();
+		due_date = sc.next();
 		System.out.printf("함께하는 사람 >");
-		with_who = sc.nextLine().trim();
+		with_who = sc.next().trim();
 		System.out.printf("장소 >");
 		place = sc.next();		
 		
@@ -110,12 +110,12 @@ public static void changeCateAll(TodoList l) {
 					+ "수정하고 싶은 카테고리의 내용을 입력하세요 >\n");
 			String after = sc.next();
 	for(TodoItem item: l.getList()) {
-		if((item.getCategory()).equals(before)) {
+		if((item.getDesc()).equals(before)) {
 			
 			TodoItem t = new TodoItem(item.getTitle(), after,item.getDesc(),item.getDue_date(), item.getIs_completed(),item.getWith_who(),item.getPlace());
 			t.setId(item.getId());
 			if(l.updateItem(t)>0) {
-				System.out.print("수정하였습니다:)");
+				//System.out.print("수정하였습니다:)");
 			}
 			count++;
 		}
@@ -203,7 +203,7 @@ public static void changeCateAll(TodoList l) {
 		}
 		
 		System.out.printf("[항목 수정]\n"
-		+ "수정할 특정 항목을 입력하세요(전부 변경하고 싶다면 '전부'를 입력하세요.[제목,내용,마감일자,사람,장소]) >");
+		+ "수정할 특정 항목을 입력하세요(전부 변경하고 싶다면 '전부'를 입력하세요.[제목,내용,마감일자,사람,장소,카테고리]) >");
 		String text = sc.next();
 		if(text.equals("전부")) {
 			

@@ -121,11 +121,11 @@ public class TodoItem {
     public String toString() {
     	
     	if(is_completed==1) {
-    	return id+". ["+this.category+"] "+this.title+"[V] - "+ this.desc+" - " +this.due_date + " - " + this.current_date+" - "+this.with_who+ " - "+this.place;
+    	return id+". ["+this.desc+"] "+this.title+"[V] - "+ this.category+" - " +this.due_date + " - " + this.current_date+" - "+this.with_who+ " - "+this.place;
     	}
     	else {
-    	return id+". ["+this.category+"] "+this.title+" - "+ this.desc+" - " + this.due_date + " - " +this.current_date+" - "+this.with_who+ " - "+this.place;
-    	}
+    	return id+". ["+this.desc+"] "+this.title+" - "+ this.category+" - " + this.due_date + " - " +this.current_date+" - "+this.with_who+ " - "+this.place;
+    	}c
     	
     }
     
