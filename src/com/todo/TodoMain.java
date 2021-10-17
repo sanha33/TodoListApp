@@ -130,6 +130,9 @@ public class TodoMain {
 				TodoUtil.listCateAll(l);
 				break;
 				
+			case "change_cate":
+				TodoUtil.changeCateAll(l);
+				break;
 			case "find_cate":
 				String cate = sc.nextLine().trim();
 				TodoUtil.findCateList(l,cate);
@@ -169,6 +172,18 @@ public class TodoMain {
 				TodoUtil.findList(l,keyword);
 				break;
 				
+			case "comp":
+				TodoUtil.completeItem(l);
+				break;
+			case "uncomp":
+				TodoUtil.uncompleteItem(l);
+				break;
+			case "ls_comp":
+				TodoUtil.listComAll(l);
+				break;
+			case "ls_uncomp":
+				TodoUtil.listUncomAll(l);
+				break;
 			case "help":
 				Menu.displaymenu();
 				break;
@@ -176,6 +191,7 @@ public class TodoMain {
 			case "exit":
 				quit = true;
 				break;
+				
 
 			default:
 				System.out.println("정확한 명령어를 입력하세요 (도움이 필요하면 help)");

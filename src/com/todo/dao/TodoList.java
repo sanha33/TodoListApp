@@ -30,7 +30,7 @@ public class TodoList {
 //	}
 
 	public int addItem(TodoItem t) {
-		String sql = "insert into list (title, memo, category, current_date, due_date)"+" values (?,?,?,?,?);";
+		String sql = "insert into list (title, memo, category, current_date, due_date, is_completed, with_who, place)"+" values (?,?,?,?,?,?,?,?);";
 		PreparedStatement pstmt;
 		int count=0;
 		try {
@@ -40,6 +40,9 @@ public class TodoList {
 			pstmt.setString(3,t.getCategory());
 			pstmt.setString(4,t.getCurrent_date());
 			pstmt.setString(5,t.getDue_date());
+			pstmt.setInt(6, t.getIs_completed());
+			pstmt.setString(7, t.getWith_who());
+			pstmt.setString(8, t.getPlace());
 			count = pstmt.executeUpdate();
 			pstmt.close();
 		} catch(SQLException e) {
@@ -49,7 +52,7 @@ public class TodoList {
 	}
 	
 	public int updateItem(TodoItem t) {
-		String sql = "update list set title=?, memo=?, category=? , current_date=?, due_date=?"+" where id = ?;";
+		String sql = "update list set title=?, memo=?, category=? , current_date=?, due_date=?, is_completed=?, with_who=?,place=?"+" where id = ?;";
 		PreparedStatement pstmt;
 		
 		int count =0;
@@ -60,7 +63,10 @@ public class TodoList {
 			pstmt.setString(3,t.getCategory());
 			pstmt.setString(4,t.getCurrent_date());
 			pstmt.setString(5,t.getDue_date());
-			pstmt.setInt(6, t.getId());
+			pstmt.setInt(6,t.getIs_completed());
+			pstmt.setString(7, t.getWith_who());
+			pstmt.setString(8, t.getPlace());
+			pstmt.setInt(9, t.getId());
 			count= pstmt.executeUpdate();
 			pstmt.close();
 		} catch(SQLException e) {
@@ -91,6 +97,9 @@ public class TodoList {
 		list.add(updated);
 	}
 
+//	public int completeItem(int index) {
+//		
+//	}
 	public ArrayList<TodoItem> getList() {
 		ArrayList<TodoItem> list = new ArrayList<TodoItem>();
 		Statement stmt;
@@ -105,7 +114,10 @@ public class TodoList {
 				String description  = rs.getString("memo");
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
-				TodoItem t = new TodoItem(title, description, category, due_date);
+				int com = rs.getInt("is_completed");
+				String with_who = rs.getString("with_who");
+				String place = rs.getString("place");
+				TodoItem t = new TodoItem(title, description, category, due_date,com,with_who,place);
 				t.setId(id);
 				t.setCurrent_date(current_date);
 				list.add(t);
@@ -153,7 +165,10 @@ public ArrayList<TodoItem> getList(String keyword){
 				String description  = rs.getString("memo");
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
-				TodoItem t = new TodoItem(title, description, category, due_date);
+				int com = rs.getInt("is_completed");
+				String with_who = rs.getString("with_who");
+				String place = rs.getString("place");
+				TodoItem t = new TodoItem(title, description, category, due_date,com,with_who,place);
 				t.setId(id);
 				t.setCurrent_date(current_date);
 				list.add(t);
@@ -221,7 +236,10 @@ public ArrayList<TodoItem> getList(String keyword){
 				String description  = rs.getString("memo");
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
-				TodoItem t = new TodoItem(title, description, category, due_date);
+				int com = rs.getInt("is_completed");
+				String with_who = rs.getString("with_who");
+				String place = rs.getString("place");
+				TodoItem t = new TodoItem(title, description, category, due_date,com,with_who,place);
 				t.setId(id);
 				t.setCurrent_date(current_date);
 				list.add(t);
@@ -252,7 +270,10 @@ public ArrayList<TodoItem> getList(String keyword){
 				String description  = rs.getString("memo");
 				String due_date = rs.getString("due_date");
 				String current_date = rs.getString("current_date");
-				TodoItem t = new TodoItem(title, description, category, due_date);
+				int com = rs.getInt("is_completed");
+				String with_who = rs.getString("with_who");
+				String place = rs.getString("place");
+				TodoItem t = new TodoItem(title, description, category, due_date,com,with_who,place);
 				t.setId(id);
 				t.setCurrent_date(current_date);
 				list.add(t);

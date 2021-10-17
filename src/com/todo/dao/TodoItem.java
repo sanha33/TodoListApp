@@ -20,9 +20,28 @@ public class TodoItem {
     private String current_date;
     private String category;
     private String due_date;
+    private int is_completed;
+    private String with_who;
+    private String place;
+    
+    
+    public String getWith_who() {
+		return with_who;
+	}
 
+	public void setWith_who(String with_who) {
+		this.with_who = with_who;
+	}
 
-    public int getNum() {
+	public String getPlace() {
+		return place;
+	}
+
+	public void setPlace(String place) {
+		this.place = place;
+	}
+
+	public int getNum() {
 		return num;
 	}
 
@@ -46,13 +65,24 @@ public class TodoItem {
 		this.due_date = due_date;
 	}
 
-	public TodoItem(String title, String category,String desc,String due_date){
+	public int getIs_completed() {
+		return is_completed;
+	}
+
+	public void setIs_completed(int is_completed) {
+		this.is_completed = is_completed;
+	}
+
+	public TodoItem(String title, String category,String desc,String due_date,int com,String who, String place){
         this.title=title;
         this.desc=desc;
         SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
         this.current_date=f.format(new Date());
         this.category=category;
         this.due_date=due_date;
+        this.is_completed=com;
+        this.with_who=who;
+        this.place=place;
 	}
     
 //
@@ -89,7 +119,13 @@ public class TodoItem {
     
     @Override
     public String toString() {
-    	return "["+category+"] "+title+" - "+ desc+" - " + due_date + " - " + current_date;
+    	
+    	if(is_completed==1) {
+    	return id+". ["+this.category+"] "+this.title+"[V] - "+ this.desc+" - " +this.due_date + " - " + this.current_date+" - "+this.with_who+ " - "+this.place;
+    	}
+    	else {
+    	return id+". ["+this.category+"] "+this.title+" - "+ this.desc+" - " + this.due_date + " - " +this.current_date+" - "+this.with_who+ " - "+this.place;
+    	}
     	
     }
     
